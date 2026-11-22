@@ -1,4 +1,4 @@
-from src.text_chunker import split_text_into_chunks
+from src.text_chunker import split_text_into_chunks, clean_text
 
 
 def test_split_text_into_chunks():
@@ -72,4 +72,9 @@ def test_exact_chunk_size():
     )
 
     assert result == ["ABCD", "DEFG", "GH"]
+def test_clean_text():
+    text = "  Hello    world!\n\nPython\tprogramming  "
+    result = clean_text(text)
+
+    assert result == "Hello world!\nPython programming"
 
